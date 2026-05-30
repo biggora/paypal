@@ -1,0 +1,98 @@
+{
+  "name": "@biggora/paypal",
+  "version": "1.0.0",
+  "description": "TypeScript SDK and NestJS adapter for the PayPal REST API.",
+  "keywords": [
+    "paypal",
+    "payments",
+    "checkout",
+    "orders",
+    "payments-api",
+    "subscriptions",
+    "payouts",
+    "invoicing",
+    "webhooks",
+    "payment-gateway",
+    "sdk",
+    "api-client",
+    "typescript",
+    "nodejs",
+    "nestjs",
+    "ecommerce"
+  ],
+  "homepage": "https://github.com/biggora/paypal#readme",
+  "bugs": {
+    "url": "https://github.com/biggora/paypal/issues"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biggora/paypal.git"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "nestjs": [
+        "dist/nest/index.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./nestjs": {
+      "types": "./dist/nest/index.d.ts",
+      "import": "./dist/nest/index.js",
+      "require": "./dist/nest/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "nestjs.d.ts",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "generate:types": "openapi-typescript https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/checkout_orders_v2.json -o src/generated/orders.ts && openapi-typescript https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/payments_payment_v2.json -o src/generated/payments.ts && openapi-typescript https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/billing_subscriptions_v1.json -o src/generated/subscriptions.ts && openapi-typescript https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/catalogs_products_v1.json -o src/generated/products.ts && openapi-typescript https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/invoicing_v2.json -o src/generated/invoicing.ts && openapi-typescript https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/payments_payouts_batch_v1.json -o src/generated/payouts.ts && openapi-typescript https://raw.githubusercontent.com/paypal/paypal-rest-api-specifications/main/openapi/notifications_webhooks_v1.json -o src/generated/webhooks.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/common": "^11.0.11",
+    "@nestjs/core": "^11.0.11",
+    "@nestjs/platform-express": "^11.0.11",
+    "@nestjs/testing": "^11.0.11",
+    "@types/express": "^5.0.1",
+    "@types/node": "^24.2.0",
+    "@types/supertest": "^6.0.3",
+    "express": "^5.1.0",
+    "openapi-typescript": "^7.10.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "supertest": "^7.1.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

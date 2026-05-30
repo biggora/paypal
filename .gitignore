@@ -1,0 +1,4 @@
+/specs/
+/.idea/
+node_modules/
+/dist/
